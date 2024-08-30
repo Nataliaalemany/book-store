@@ -55,9 +55,7 @@ export default function useCart(book = null) {
   }
 
   function emptyCart() {
-    setTimeout(() => {
-      setCartContent([]);
-    }, 5000);
+    setCartContent([]);
   }
 
   return { addBookToCart, cartCount, cartSubtotal, emptyCart, removeCartItem, updateBookCount };

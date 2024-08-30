@@ -1,6 +1,6 @@
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { useContext } from 'react';
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { CartContext } from '../../context/CartContext';
 import { ModalContext } from "../../context/ModalContext";
@@ -13,8 +13,6 @@ export default function Cart() {
   const { cartSubtotal, emptyCart } = useCart();
 
   function handleCheckout() {
-    emptyCart();
-
     toast("Demo site: Purchase simulation complete.", {
       position: "top-right",
       autoClose: 5000,
@@ -23,10 +21,12 @@ export default function Cart() {
       progress: undefined,
       theme: "light",
       closeOnClick: false,
-      closeButton: false,
+      closeButton: true,
       pauseOnHover: false,
       zIndex: 9999
     });
+
+    emptyCart();
   }
 
   const emptyShoppingCart =
@@ -67,8 +67,6 @@ export default function Cart() {
         >
           Check Out
         </button>
-
-        <ToastContainer />
       </div>
     </>
 

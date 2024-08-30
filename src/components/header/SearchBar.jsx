@@ -20,12 +20,10 @@ export default function SearchBar() {
 
   useEffect(() => {
     if (type) {
-      console.log(type);
       setSearchType(type);
     }
 
     if (query) {
-      console.log(query);
       setInputValue(query.replaceAll('+', ' '));
     }
   }, []);

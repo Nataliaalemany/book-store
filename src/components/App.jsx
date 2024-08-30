@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ToastContainer } from 'react-toastify';
 import CartContextProvider from '../context/CartContext';
 import ModalContextProvider from '../context/ModalContext';
 import WishListContextProvider from '../context/WishListContext';
@@ -14,6 +15,8 @@ export default function App() {
         <WishListContextProvider>
           <ModalContextProvider>
             <div className="flex flex-col min-h-screen">
+              <ToastContainer />
+
               <Content />
             </div>
           </ModalContextProvider>
