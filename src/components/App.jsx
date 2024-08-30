@@ -1,9 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Content from './Content';
-import CartContextProvider from './context/CartContext';
-import ModalContextProvider from './context/ModalContext';
-import WishListContextProvider from './context/WishListContext';
-import Header from './Header';
+import CartContextProvider from '../context/CartContext';
+import ModalContextProvider from '../context/ModalContext';
+import WishListContextProvider from '../context/WishListContext';
+import Content from '../pages/Content';
 
 
 export default function App() {
@@ -15,8 +14,6 @@ export default function App() {
         <WishListContextProvider>
           <ModalContextProvider>
             <div className="flex flex-col min-h-screen">
-              <Header />
-
               <Content />
             </div>
           </ModalContextProvider>

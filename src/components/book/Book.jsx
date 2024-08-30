@@ -1,11 +1,11 @@
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { EyeIcon } from "@heroicons/react/24/solid";
 import { useContext } from "react";
+import { ModalContext } from "../../context/ModalContext";
+import useWishList from "../../hooks/useWishList";
+import CartButton from "../cart/CartButton";
 import BookDetails from "./BookDetails";
 import BookImage from "./BookImage";
-import CartButton from "./CartButton";
-import { ModalContext } from "./context/ModalContext";
-import useWishList from "./hooks/useWishList";
 
 export default function Book({ book }) {
   const { handleModal } = useContext(ModalContext);

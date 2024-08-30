@@ -1,11 +1,13 @@
 import { useDebounce } from "@uidotdev/usehooks";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { AUTHOR, TITLE } from "./api";
+import { useNavigate, useParams } from "react-router-dom";
+import { AUTHOR, TITLE } from "../../api";
 
-export default function SearchBar({ inputValue, setInputValue }) {
+export default function SearchBar() {
   const [searchType, setSearchType] = useState(TITLE);
+  const [inputValue, setInputValue] = useState('');
 
+  const { type, query } = useParams();
   const navigate = useNavigate();
   const debouncedInputValue = useDebounce(inputValue, 500);
 
@@ -15,6 +17,18 @@ export default function SearchBar({ inputValue, setInputValue }) {
       navigate(`/${searchType}/${searchQuery}/`);
     }
   }, [debouncedInputValue, searchType]);
+
+  useEffect(() => {
+    if (type) {
+      console.log(type);
+      setSearchType(type);
+    }
+
+    if (query) {
+      console.log(query);
+      setInputValue(query.replaceAll('+', ' '));
+    }
+  }, []);
 
   function handleInput(e) {
     setInputValue(e.target.value);
@@ -34,7 +48,7 @@ export default function SearchBar({ inputValue, setInputValue }) {
         onChange={handleInput}
       />
 
-      <select className="h-full p-2.5 pl-4 focus:outline-none rounded-r-md capitalize" onChange={handleSelect}>
+      <select className="h-full p-2.5 pl-4 focus:outline-none rounded-r-md capitalize" onChange={handleSelect} value={searchType}>
         <option value={TITLE}>{TITLE}</option>
 
         <option value={AUTHOR}>{AUTHOR}</option>

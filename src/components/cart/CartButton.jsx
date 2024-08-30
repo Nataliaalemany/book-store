@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useCart from './hooks/useCart';
+import useCart from '../../hooks/useCart';
 
 export default function CartButton({ book }) {
   const [buttonText, setButtonText] = useState('Add To Cart');

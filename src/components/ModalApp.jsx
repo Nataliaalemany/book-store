@@ -1,6 +1,6 @@
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { useContext } from "react";
-import { ModalContext } from "./context/ModalContext";
+import { ModalContext } from "../context/ModalContext";
 
 export default function ModalApp() {
   const { isShowing, handleModal, modalContent, isCentered } = useContext(ModalContext);

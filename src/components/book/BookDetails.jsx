@@ -1,8 +1,8 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import React, { useContext } from "react";
+import { ModalContext } from "../../context/ModalContext";
+import CartButton from "../cart/CartButton";
 import BookImage from "./BookImage";
-import CartButton from "./CartButton";
-import { ModalContext } from "./context/ModalContext";
 
 export default function BookDetails({ book }) {
   const { handleModal } = useContext(ModalContext);

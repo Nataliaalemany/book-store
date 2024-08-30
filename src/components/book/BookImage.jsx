@@ -1,4 +1,4 @@
-import NoImageIcon from "./icons/NoImageIcon";
+import NoImageIcon from "../../icons/NoImageIcon";
 
 export default function BookImage({ bookCoverThumbnail, bookTitle }) {
 

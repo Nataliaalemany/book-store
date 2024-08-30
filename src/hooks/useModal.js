@@ -9,7 +9,6 @@ export default function useModal() {
     setIsShowing(!isShowing);
     if (content) {
       setModalContent(content);
-      console.log(position, 'position')
       setIsCentered(position);
     } 
   }

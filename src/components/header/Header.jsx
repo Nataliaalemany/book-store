@@ -1,17 +1,16 @@
 import { HeartIcon, ShoppingCartIcon, UserIcon } from "@heroicons/react/24/outline";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import Cart from "./Cart";
-import { ModalContext } from "./context/ModalContext";
-import { WishListContext } from "./context/WishListContext";
-import useCart from "./hooks/useCart";
-import LogoIcon from "./icons/LogoIcon";
+import { ModalContext } from "../../context/ModalContext";
+import { WishListContext } from "../../context/WishListContext";
+import useCart from "../../hooks/useCart";
+import LogoIcon from "../../icons/LogoIcon";
+import Cart from "../cart/Cart";
+import SignIn from "../SignIn";
 import SearchBar from "./SearchBar";
-import SignIn from "./SignIn";
 
 export default function Header() {
 	const [username, setUsername] = useState();
-	const [inputValue, setInputValue] = useState('');
 	const { handleModal } = useContext(ModalContext);
 	const { cartCount } = useCart();
 	const { wishListContent } = useContext(WishListContext);
@@ -28,14 +27,13 @@ export default function Header() {
 				<Link
 					to="/"
 					className="flex flex-row"
-					onClick={() => setInputValue('')}
 				>
 					<LogoIcon />
 
 					<span className="font-bold">Book Store</span>
 				</Link>
 
-				<SearchBar inputValue={inputValue} setInputValue={setInputValue} />
+				<SearchBar />
 
 				<div className="flex flex-row items-baseline justify-around text-xs w-36">
 					<button

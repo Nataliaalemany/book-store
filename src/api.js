@@ -7,75 +7,19 @@ export const AUTHOR = 'author';
 export const TITLE = 'title';
 
 const api = async (endpoint, maxResults, startIndex) => {
-	console.log(`${BASE_URL}${endpoint}${BOOK_DISPLAY_AMOUNT}${maxResults}${BOOK_START_INDEX_URL}${startIndex}`);
   const response = await fetch(`${BASE_URL}${endpoint}${BOOK_DISPLAY_AMOUNT}${maxResults}${BOOK_START_INDEX_URL}${startIndex}`);
   const data = await response.json();
-  // const data = fakeApi;
   return data;
 }
 
-const fakeApi = {
-	totalItems: 300,
-	items: [
-		{
-			id: 'unique',
-			volumeInfo: {
-				authors: ['j.+r.+r.+tolkien'],
-				imageLinks: {
-					thumbnail: 'picture',
-					smallThumbnail: 'smallPicture',
-				},
-				title: 'lord+of+the+rings',
-				industryIdentifiers: [{
-					isbn: {
-						type: 'ISBN_13',
-						identifier: 572395732,
-					},
-				}],
-				categories: ['fantasy'],
-			},			
-			saleInfo: {
-				price: 5000,
-				currency: 'huf',
-			},
-			count: 1,
-			inWishList: false,	
-		},
-		{
-			id: 'superUnique',
-			volumeInfo: {
-				authors: ['jane+austen'],
-				imageLinks: {
-					thumbnail: 'picture',
-					smallThumbnail: 'smallPicture',
-				},
-				title: 'pride+and+prejudice',
-				industryIdentifiers: [{
-					isbn: {
-						type: 'ISBN_13',
-						identifier: 572395732,
-					},
-				}],
-				categories: ['fantasy'],
-			},			
-			saleInfo: {
-				price: 5000,
-				currency: 'huf',
-			},
-			count: 1,
-			inWishList: false,	
-		},
-	]
-}
-
-export const fetchVolumes = async (searchQuery, maxResult, startIndex) => {
+const fetchVolumes = async (searchQuery, maxResult, startIndex) => {
 	if (!searchQuery) {
 		searchQuery = DEFAULT_VOLUME_SEARCH_QUERY;
 	}
 	return api(searchQuery, maxResult, startIndex);
 }
 
-export const fetchAuthors = async (searchQuery, maxResult, startIndex) => {
+const fetchAuthors = async (searchQuery, maxResult, startIndex) => {
 	if (!searchQuery) {
 		searchQuery = DEFAULT_TITLE_SEARCH_QUERY;
 	}
@@ -90,7 +34,7 @@ export const fetchBookData = async (searchQuery, searchType, maxResult, startInd
 
 	const fetchTitleOrAuthor = fetchFunctions[searchType];
 	const bookVolumes = await fetchTitleOrAuthor(searchQuery, maxResult, startIndex);
-
+	
 	return simplifyApiData(bookVolumes);
 }
 
@@ -101,7 +45,7 @@ function simplifyApiData(bookVolumes) {
 	const maximumPrice = 8000;
 	return {
 		totalItems: bookVolumes.totalItems,
-		items: bookVolumes.items.map(book => ({
+		items: bookVolumes.items?.map(book => ({
 			id: book.id,
 			authors: book.volumeInfo.authors,
 			imageLinks: book.volumeInfo.imageLinks,

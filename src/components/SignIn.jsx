@@ -1,6 +1,6 @@
 import { ExclamationCircleIcon, EyeIcon, EyeSlashIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useContext, useState } from "react";
-import { ModalContext } from "./context/ModalContext";
+import { ModalContext } from "../context/ModalContext";
 
 export default function SignIn({ setUsername }) {
   const USERNAME = 'Natalia';

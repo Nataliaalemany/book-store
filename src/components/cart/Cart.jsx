@@ -2,10 +2,10 @@ import { XMarkIcon } from '@heroicons/react/24/solid';
 import { useContext } from 'react';
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { CartContext } from '../../context/CartContext';
+import { ModalContext } from "../../context/ModalContext";
+import useCart from '../../hooks/useCart';
 import CartItem from './CartItem';
-import { CartContext } from './context/CartContext';
-import { ModalContext } from "./context/ModalContext";
-import useCart from './hooks/useCart';
 
 export default function Cart() {
   const { handleModal } = useContext(ModalContext);

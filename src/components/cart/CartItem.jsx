@@ -1,6 +1,6 @@
 import { TrashIcon } from "@heroicons/react/24/outline";
-import BookImage from "./BookImage";
-import useCart from "./hooks/useCart";
+import useCart from "../../hooks/useCart";
+import BookImage from "../book/BookImage";
 
 export default function CartItem({ book }) {
   const { removeCartItem, updateBookCount } = useCart(book);

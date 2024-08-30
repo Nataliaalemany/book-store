@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import WishListItem from "./WishListItem";
-import { WishListContext } from "./context/WishListContext";
+import WishListItem from "../components/WishListItem";
+import { WishListContext } from "../context/WishListContext";
 
 export default function WishList() {
   const { wishListContent } = useContext(WishListContext);
