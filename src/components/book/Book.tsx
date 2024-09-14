@@ -3,11 +3,16 @@ import { EyeIcon } from "@heroicons/react/24/solid";
 import { useContext } from "react";
 import { ModalContext } from "../../context/ModalContext";
 import useWishList from "../../hooks/useWishList";
+import { BookType } from "../../types/Book.type";
 import CartButton from "../cart/CartButton";
 import BookDetails from "./BookDetails";
 import BookImage from "./BookImage";
 
-export default function Book({ book }) {
+type BookProps = {
+  book: BookType;
+}
+
+export default function Book({ book }: BookProps) {
   const { handleModal } = useContext(ModalContext);
   const { toggleWishlistItem, inWishList } = useWishList(book);
 

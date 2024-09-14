@@ -1,15 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import { fetchBookData, TITLE } from '../../api';
-import LoadingIndicator from '../../icons/LoadingIndicator';
-import NotFound from '../../pages/NotFound';
-import Pagination from '../Pagination';
-import Book from './Book';
+import { fetchBookData } from '../api';
+import Pagination from '../components/Pagination';
+import Book from '../components/book/Book';
+import { TITLE } from '../constants';
+import LoadingIndicator from '../icons/LoadingIndicator';
+import { Params } from '../types/Params.type';
+import NotFound from './NotFound';
 
 export default function BookList() {
-	const { type, query, pageNumber } = useParams();
-	const startIndex = pageNumber ? (pageNumber - 1) * 40 : 0;
-	let maxResult = query ? 40 : 18;
+	const { type, query, pageNumber } = useParams<Params>();
+	const pageNumberInt = parseInt(pageNumber!);
+	const startIndex: number = pageNumber ? (pageNumberInt - 1) * 40 : 0;
+	const maxResult: number = query ? 40 : 18;
 
 	const { data: books, isLoading, isError } = useQuery({
 		queryKey: ['books', query, type, pageNumber],
@@ -17,14 +20,6 @@ export default function BookList() {
 		retry: 0,
 		staleTime: 60 * 60 * 1000, // 1 hour
 	})
-
-	if (books?.error) {
-		return (
-			<div className="flex items-center justify-center flex-grow">
-				{books.error.message}
-			</div>
-		)
-	}
 
 	if (isLoading) {
 		return <LoadingIndicator />

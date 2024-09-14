@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import BookList from '../components/book/BookList';
-import Layout from '../components/Layout';
+import BookList from '../pages/BookList';
+import WishList from '../pages/WishList';
 import { home, wishList } from '../routes';
-import WishList from './WishList';
+import Layout from './Layout';
 
 export default function Content() {
   return (

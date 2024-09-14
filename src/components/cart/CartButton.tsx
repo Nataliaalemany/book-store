@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useCart from '../../hooks/useCart';
+import { BookType } from '../../types/Book.type';
 
-export default function CartButton({ book }) {
-  const [buttonText, setButtonText] = useState('Add To Cart');
+type CartButtonProps = {
+  book: BookType;
+}
+
+export default function CartButton({ book }: CartButtonProps) {
+  const [buttonText, setButtonText] = useState<string>('Add To Cart');
   const { addBookToCart } = useCart(book);
 
   function handleAddBookToCart() {
-    addBookToCart();
+    addBookToCart(book);
 
     setButtonText('Added');
     setTimeout(() => {

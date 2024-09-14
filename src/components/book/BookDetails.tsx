@@ -1,16 +1,21 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import React, { useContext } from "react";
 import { ModalContext } from "../../context/ModalContext";
+import { BookType } from "../../types/Book.type";
 import CartButton from "../cart/CartButton";
 import BookImage from "./BookImage";
 
-export default function BookDetails({ book }) {
+type BookDetailsProps = {
+  book: BookType;
+}
+
+export default function BookDetails({ book }: BookDetailsProps) {
   const { handleModal } = useContext(ModalContext);
 
   return (
     <div className="rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0">
       <XMarkIcon
-        onClick={() => handleModal(false)}
+        onClick={() => handleModal(null, false)}
         className="absolute p-1 text-gray-600 cursor-pointer top-2 right-2 w-7 hover:text-black"
       />
 
@@ -34,7 +39,7 @@ export default function BookDetails({ book }) {
             <div className="text-green-800">In Stock</div>
 
             {book.industryIdentifiers?.map((isbn, index) => (
-              <React.Fragment key={isbn + index}>
+              <React.Fragment key={`${isbn}${index}`}>
                 <div>{isbn.type === "ISBN_10" ? "ISBN-10" : "ISBN-13"}</div>
                 <div>{isbn.identifier}</div>
               </React.Fragment>

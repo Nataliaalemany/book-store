@@ -10,7 +10,7 @@ import SignIn from "../SignIn";
 import SearchBar from "./SearchBar";
 
 export default function Header() {
-	const [username, setUsername] = useState();
+	const [username, setUsername] = useState<string>();
 	const { handleModal } = useContext(ModalContext);
 	const { cartCount } = useCart();
 	const { wishListContent } = useContext(WishListContext);

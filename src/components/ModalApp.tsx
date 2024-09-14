@@ -12,7 +12,7 @@ export default function ModalApp() {
   }
 
   return (
-    <Dialog open={isShowing} as="div" className="relative z-10 opacity-100 focus:outline-none" onClose={handleModal}>
+    <Dialog open={isShowing} as="div" className="relative z-10 opacity-100 focus:outline-none" onClose={() => handleModal(null, false)}>
       <div className="fixed inset-0 z-10 bg-black bg-opacity-75">
         <div className={isCentered ? center : sidebar}>
           <DialogPanel transition>

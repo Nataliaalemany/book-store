@@ -1,10 +1,14 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
-import React from "react";
 import useWishList from "../hooks/useWishList";
+import { BookType } from "../types/Book.type";
 import BookImage from "./book/BookImage";
 import CartButton from "./cart/CartButton";
 
-export default function WishListItem({ book }) {
+type WishListItemProps = {
+  book: BookType;
+}
+
+export default function WishListItem({ book }: WishListItemProps) {
   const { removeWishListItem } = useWishList(book);
 
   return (

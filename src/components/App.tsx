@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import CartContextProvider from '../context/CartContext';
 import ModalContextProvider from '../context/ModalContext';
 import WishListContextProvider from '../context/WishListContext';
-import Content from '../pages/Content';
+import Content from './Content';
 
 
 export default function App() {

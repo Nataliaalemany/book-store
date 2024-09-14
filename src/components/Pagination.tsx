@@ -1,6 +1,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Params } from '../types/Params.type';
 
 export default function Pagination() {
   // there is a fixed highest index because of an error in Google Books API where the totalItems changes seemingly 
@@ -11,21 +12,21 @@ export default function Pagination() {
   const pageCount = Math.max(1, Math.ceil(highestIndex / itemsPerPage));
   const pages = [...Array(pageCount).keys()];
 
-  const { pageNumber } = useParams();
+  const { pageNumber } = useParams<Params>();
+  const pageNumberInt = pageNumber ? parseInt(pageNumber) : null;
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (pageNumber <= 1) {
+    if (pageNumberInt && pageNumberInt <= 1) {
       navigate('../', { relative: "path", replace: true });
     }
   }, [pageNumber])
 
-
-  function handlePageNavigation(offset) {
-    jumpToSpecificPage(parseInt(pageNumber ?? 1) + offset);
+  function handlePageNavigation(offset: number) {
+    jumpToSpecificPage((pageNumberInt ?? 1) + offset);
   }
 
-  function jumpToSpecificPage(page) {
+  function jumpToSpecificPage(page: number) {
     if (pageNumber) {
       navigate(`../${page}/`, { relative: "path" })
     } else {
@@ -49,13 +50,13 @@ export default function Pagination() {
         return <button
           onClick={() => jumpToSpecificPage(page + 1)}
           key={'pageCount' + index}
-          className={`px-3 py-1 border hover:bg-gray-50 ${(pageNumber ? pageNumber : 1) - 1 === page ? 'bg-slate-300 hover:bg-slate-300' : 'bg-white'}`}
+          className={`px-3 py-1 border hover:bg-gray-50 ${(pageNumberInt ? pageNumberInt : 1) - 1 === page ? 'bg-slate-300 hover:bg-slate-300' : 'bg-white'}`}
         >
           {page + 1}
         </button>
       })}
 
-      {(pageNumber === undefined || pageNumber < pageCount) &&
+      {(pageNumber === undefined || pageNumberInt && pageNumberInt < pageCount) &&
         <button
           onClick={() => handlePageNavigation(+1)}
           className='px-3 py-2.5 border hover:bg-gray-50'

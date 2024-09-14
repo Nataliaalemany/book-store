@@ -13,7 +13,7 @@ export default function Cart() {
   const { cartSubtotal, emptyCart } = useCart();
 
   function handleCheckout() {
-    toast("Demo site: Purchase simulation complete.", {
+    toast("Purchase simulation complete.", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -23,7 +23,6 @@ export default function Cart() {
       closeOnClick: false,
       closeButton: true,
       pauseOnHover: false,
-      zIndex: 9999
     });
 
     emptyCart();
@@ -39,7 +38,7 @@ export default function Cart() {
 
       <button
         className="w-full p-3 my-2 font-bold text-white border rounded-md bg-amber-400 hover:shadow-lg"
-        onClick={(() => handleModal(false))}
+        onClick={(() => handleModal(null, false))}
       >
         Continue Shopping
       </button>
@@ -76,7 +75,7 @@ export default function Cart() {
         <p className="text-base font-bold">Shopping Cart</p>
 
         <XMarkIcon
-          onClick={(() => handleModal(false))}
+          onClick={(() => handleModal(null, false))}
           className="w-5 text-gray-600 cursor-pointer hover:text-black"
         />
       </div>

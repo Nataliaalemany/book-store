@@ -1,6 +1,11 @@
 import NoImageIcon from "../../icons/NoImageIcon";
 
-export default function BookImage({ bookCoverThumbnail, bookTitle }) {
+type BookImageProps = {
+  bookCoverThumbnail: string | undefined,
+  bookTitle: string
+}
+
+export default function BookImage({ bookCoverThumbnail, bookTitle }: BookImageProps) {
 
   if (!bookCoverThumbnail) {
     return <div className="flex justify-center">
