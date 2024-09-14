@@ -15,6 +15,5 @@ For this project I am using ReactJS and Typescript with TailwindCSS for styling.
 ## Known Issues
 Not all books returned from the API have a price, for that reason a random price is generated for each book. 
 
-There is a bug in the API where the total page count changes random on each page of results.  /
-Here is more information on this issue:
-https://stackoverflow.com/questions/76799691/google-books-api-erroneously-incrementing-totalitems-returned
+[There is a bug]([url](https://stackoverflow.com/questions/76799691/google-books-api-erroneously-incrementing-totalitems-returned
+) in the API where the total page count changes random on each page of results.
