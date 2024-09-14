@@ -9,11 +9,11 @@ For this project I am using ReactJS and Typescript with TailwindCSS for styling.
 ## How to Run Project
 
 1. Copy the repo
-2. Run command npm install
-3. Run command npm start
+2. `npm install`
+3. `npm start`
 
 ## Known Issues
 Not all books returned from the API have a price, for that reason a random price is generated for each book. 
 
-[There is a bug]([url](https://stackoverflow.com/questions/76799691/google-books-api-erroneously-incrementing-totalitems-returned
-) in the API where the total page count changes random on each page of results.
+[There is a bug in the API](https://stackoverflow.com/questions/76799691/google-books-api-erroneously-incrementing-totalitems-returned
+) where the total page count changes randomly on each page of results.
