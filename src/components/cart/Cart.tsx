@@ -1,73 +1,14 @@
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { useContext } from 'react';
-import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { CartContext } from '../../context/CartContext';
 import { ModalContext } from "../../context/ModalContext";
-import useCart from '../../hooks/useCart';
-import CartItem from './CartItem';
+import EmptyShoppingCart from './EmptyShoppingCart';
+import ShoppingCartWithItems from './ShoppingCartWithItems';
 
 export default function Cart() {
   const { handleModal } = useContext(ModalContext);
   const { cartContent } = useContext(CartContext);
-  const { cartSubtotal, emptyCart } = useCart();
-
-  function handleCheckout() {
-    toast("Purchase simulation complete.", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      progressStyle: { background: "blue" },
-      progress: undefined,
-      theme: "light",
-      closeOnClick: false,
-      closeButton: true,
-      pauseOnHover: false,
-    });
-
-    emptyCart();
-  }
-
-  const emptyShoppingCart =
-    <div className='mx-2'>
-      <p className="my-2 text-gray-500 ">0 items</p>
-
-      <div className="flex justify-center mt-5 mb-3">
-        <p>Your cart is empty</p>
-      </div>
-
-      <button
-        className="w-full p-3 my-2 font-bold text-white border rounded-md bg-amber-400 hover:shadow-lg"
-        onClick={(() => handleModal(null, false))}
-      >
-        Continue Shopping
-      </button>
-    </div>
-
-  const shoppingCartWithItems =
-    <>
-      <div className='overflow-y-auto'>
-        {cartContent?.map((book, index) => (
-          <div key={book.id + index}>
-            <CartItem book={book} />
-          </div>
-        ))}
-      </div>
-
-      <div className='px-2 font-bold bg-white'>
-        <div className='flex justify-between py-2'>
-          <p>SUBTOTAL:</p>
-          <p className='text-red-400'>{cartSubtotal} HUF</p>
-        </div>
-
-        <button
-          onClick={handleCheckout}
-          className="w-full p-3 my-2 text-white border rounded-md bg-amber-400 hover:shadow-lg"
-        >
-          Check Out
-        </button>
-      </div>
-    </>
 
   return (
     <div className="flex flex-col">
@@ -80,7 +21,7 @@ export default function Cart() {
         />
       </div>
 
-      {cartContent?.length > 0 ? shoppingCartWithItems : emptyShoppingCart}
+      {cartContent.length > 0 ? <ShoppingCartWithItems /> : <EmptyShoppingCart />}
     </div >
   )
 }

@@ -9,10 +9,12 @@ import { Params } from '../types/Params.type';
 import NotFound from './NotFound';
 
 export default function BookList() {
+	const MIN_RESULTS_PER_PAGE = 18;
+	const MAX_RESULTS_PER_PAGE = 40;
 	const { type, query, pageNumber } = useParams<Params>();
 	const pageNumberInt = parseInt(pageNumber!);
-	const startIndex: number = pageNumber ? (pageNumberInt - 1) * 40 : 0;
-	const maxResult: number = query ? 40 : 18;
+	const startIndex: number = pageNumber ? (pageNumberInt - 1) * MAX_RESULTS_PER_PAGE : 0;
+	const maxResult: number = query ? MAX_RESULTS_PER_PAGE : MIN_RESULTS_PER_PAGE;
 
 	const { data: books, isLoading, isError } = useQuery({
 		queryKey: ['books', query, type, pageNumber],
@@ -29,14 +31,14 @@ export default function BookList() {
 		return <NotFound />
 	}
 
-	if (books?.totalItems === 0) {
+	if (!books || books.totalItems === 0) {
 		return <div className="flex items-center justify-center flex-grow">There are no books found</div>;
 	}
 
 	return (
 		<div className="container">
 			<div className='grid gap-4 grid-cols-[repeat(auto-fit,minmax(144px,1fr))]'>
-				{books?.items?.map((book) => (
+				{books.items.map((book) => (
 					<Book key={book.id} book={book} />
 				))}
 			</div>

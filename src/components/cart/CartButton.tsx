@@ -8,7 +8,7 @@ type CartButtonProps = {
 
 export default function CartButton({ book }: CartButtonProps) {
   const [buttonText, setButtonText] = useState<string>('Add To Cart');
-  const { addBookToCart } = useCart(book);
+  const { addBookToCart } = useCart();
 
   function handleAddBookToCart() {
     addBookToCart(book);

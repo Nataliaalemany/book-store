@@ -1,2 +1,2 @@
-export const AUTHOR: string = 'author';
-export const TITLE: string = 'title';
+export const AUTHOR = 'author';
+export const TITLE = 'title';

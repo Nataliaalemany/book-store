@@ -5,11 +5,11 @@ export default function useModal() {
   const [modalContent, setModalContent] = useState<ReactNode>(null);
   const [isCentered, setIsCentered] = useState<boolean>(false);
 
-  const handleModal = (content: ReactNode, position: boolean): void => {
+  const handleModal = (content: ReactNode, isPositionCenetered: boolean): void => {
     setIsShowing(!isShowing);
     if (content) {
       setModalContent(content);
-      setIsCentered(position);
+      setIsCentered(isPositionCenetered);
     }
   }
 

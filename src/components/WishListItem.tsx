@@ -18,7 +18,7 @@ export default function WishListItem({ book }: WishListItemProps) {
           <BookImage bookCoverThumbnail={book.imageLinks?.smallThumbnail} bookTitle={book.title} />
         </div>
         <div className="flex flex-col mx-4">
-          <div>{book?.title}</div>
+          <div className="truncate max-w-80" title={book.title} >{book.title}</div>
 
           <div className="font-bold text-red-400 ">{book.saleInfo.price} {book.saleInfo.currency}</div>
         </div>

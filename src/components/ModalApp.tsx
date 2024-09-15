@@ -8,7 +8,7 @@ export default function ModalApp() {
   const sidebar = "fixed top-0 right-0 text-xs bg-white w-80 h-screen";
 
   if (!isShowing) {
-    return;
+    return null;
   }
 
   return (

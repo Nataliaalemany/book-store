@@ -15,17 +15,15 @@ const api = async (endpoint: string, maxResults: number, startIndex: number): Pr
 }
 
 const fetchVolumes = async (searchQuery: string | undefined, maxResult: number, startIndex: number): Promise<string> => {
-	if (!searchQuery) {
-		searchQuery = DEFAULT_VOLUME_SEARCH_QUERY;
-	}
-	return api(searchQuery, maxResult, startIndex);
+	const query = searchQuery || DEFAULT_VOLUME_SEARCH_QUERY;
+
+	return api(query, maxResult, startIndex);
 }
 
 const fetchAuthors = async (searchQuery: string | undefined, maxResult: number, startIndex: number): Promise<string> => {
-	if (!searchQuery) {
-		searchQuery = DEFAULT_TITLE_SEARCH_QUERY;
-	}
-	return api('inauthor:' + searchQuery, maxResult, startIndex);
+	const query = searchQuery || DEFAULT_TITLE_SEARCH_QUERY;
+
+	return api('inauthor:' + query, maxResult, startIndex);
 }
 
 export const fetchBookData = async (

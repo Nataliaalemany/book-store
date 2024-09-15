@@ -7,9 +7,9 @@ export default function Pagination() {
   // there is a fixed highest index because of an error in Google Books API where the totalItems changes seemingly 
   // randomly, causing issues with using it to calculate how many pages there actually are
   // https://stackoverflow.com/questions/76799691/google-books-api-erroneously-incrementing-totalitems-returned
-  const highestIndex = 200;
-  const itemsPerPage = 40;
-  const pageCount = Math.max(1, Math.ceil(highestIndex / itemsPerPage));
+  const HIGHEST_INDEX = 200;
+  const ITEMS_PER_PAGE = 40;
+  const pageCount = Math.max(1, Math.ceil(HIGHEST_INDEX / ITEMS_PER_PAGE));
   const pages = [...Array(pageCount).keys()];
 
   const { pageNumber } = useParams<Params>();
@@ -46,7 +46,7 @@ export default function Pagination() {
         </button>
       }
 
-      {pages?.map((page, index) => {
+      {pages.map((page, index) => {
         return <button
           onClick={() => jumpToSpecificPage(page + 1)}
           key={'pageCount' + index}
@@ -56,7 +56,7 @@ export default function Pagination() {
         </button>
       })}
 
-      {(pageNumber === undefined || pageNumberInt && pageNumberInt < pageCount) &&
+      {(pageNumberInt === null || pageNumberInt < pageCount) &&
         <button
           onClick={() => handlePageNavigation(+1)}
           className='px-3 py-2.5 border hover:bg-gray-50'
