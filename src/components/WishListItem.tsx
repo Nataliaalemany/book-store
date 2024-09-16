@@ -1,12 +1,12 @@
-import { XMarkIcon } from "@heroicons/react/24/solid";
-import useWishList from "../hooks/useWishList";
-import { BookType } from "../types/Book.type";
-import BookImage from "./book/BookImage";
-import CartButton from "./cart/CartButton";
+import { XMarkIcon } from '@heroicons/react/24/solid';
+import useWishList from '../hooks/useWishList';
+import { BookType } from '../types/Book.type';
+import BookImage from './book/BookImage';
+import CartButton from './cart/CartButton';
 
 type WishListItemProps = {
   book: BookType;
-}
+};
 
 export default function WishListItem({ book }: WishListItemProps) {
   const { removeWishListItem } = useWishList(book);
@@ -18,9 +18,13 @@ export default function WishListItem({ book }: WishListItemProps) {
           <BookImage bookCoverThumbnail={book.imageLinks?.smallThumbnail} bookTitle={book.title} />
         </div>
         <div className="flex flex-col mx-4">
-          <h2 className="truncate max-w-80" title={book.title}>{book.title}</h2>
+          <h2 className="truncate max-w-80" title={book.title}>
+            {book.title}
+          </h2>
 
-          <div className="font-bold text-red-400 ">{book.saleInfo.price} {book.saleInfo.currency}</div>
+          <div className="font-bold text-red-400 ">
+            {book.saleInfo.price} {book.saleInfo.currency}
+          </div>
         </div>
       </div>
 
@@ -35,5 +39,5 @@ export default function WishListItem({ book }: WishListItemProps) {
         <CartButton book={book} />
       </div>
     </div>
-  )
+  );
 }

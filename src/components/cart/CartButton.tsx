@@ -4,7 +4,7 @@ import { BookType } from '../../types/Book.type';
 
 type CartButtonProps = {
   book: BookType;
-}
+};
 
 export default function CartButton({ book }: CartButtonProps) {
   const [buttonText, setButtonText] = useState<string>('Add To Cart');
@@ -26,5 +26,5 @@ export default function CartButton({ book }: CartButtonProps) {
     >
       {buttonText}
     </button>
-  )
+  );
 }

@@ -1,6 +1,6 @@
-import { BookType } from "./Book.type"
+import { BookType } from './Book.type';
 
 export type BookListType = {
-  totalItems: number,
-  items: BookType[],
-}
+  totalItems: number;
+  items: BookType[];
+};

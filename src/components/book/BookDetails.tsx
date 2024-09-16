@@ -1,13 +1,13 @@
-import { XMarkIcon } from "@heroicons/react/24/solid";
-import React, { useContext } from "react";
-import { ModalContext } from "../../context/ModalContext";
-import { BookType } from "../../types/Book.type";
-import CartButton from "../cart/CartButton";
-import BookImage from "./BookImage";
+import { XMarkIcon } from '@heroicons/react/24/solid';
+import React, { useContext } from 'react';
+import { ModalContext } from '../../context/ModalContext';
+import { BookType } from '../../types/Book.type';
+import CartButton from '../cart/CartButton';
+import BookImage from './BookImage';
 
 type BookDetailsProps = {
   book: BookType;
-}
+};
 
 export default function BookDetails({ book }: BookDetailsProps) {
   const { handleModal } = useContext(ModalContext);
@@ -21,16 +21,20 @@ export default function BookDetails({ book }: BookDetailsProps) {
 
       <div className="grid grid-cols-2 h-96">
         <div className="flex items-center justify-center p-4 h-96">
-          <BookImage bookCoverThumbnail={book.imageLinks?.thumbnail} bookTitle={book.title} />
+          <BookImage
+            bookCoverThumbnail={book.imageLinks?.thumbnail}
+            bookTitle={book.title}
+          />
         </div>
 
         <div className="flex flex-col justify-between px-2 w-80">
           <h2 className="py-4 text-lg border-b-2 text-wrap">{book.title}</h2>
 
-          <div className="py-4 text-xl font-bold text-red-400">{book.saleInfo.price} {book.saleInfo.currency}</div>
+          <div className="py-4 text-xl font-bold text-red-400">
+            {book.saleInfo.price} {book.saleInfo.currency}
+          </div>
 
           <div className="flex flex-row justify-between py-4 border-b-2">
-
             <CartButton book={book} />
           </div>
 
@@ -40,13 +44,13 @@ export default function BookDetails({ book }: BookDetailsProps) {
 
             {book.industryIdentifiers?.map((isbn, index) => (
               <React.Fragment key={`${isbn}${index}`}>
-                <div>{isbn.type === "ISBN_10" ? "ISBN-10" : "ISBN-13"}</div>
+                <div>{isbn.type === 'ISBN_10' ? 'ISBN-10' : 'ISBN-13'}</div>
                 <div>{isbn.identifier}</div>
               </React.Fragment>
             ))}
 
-            {book.authors
-              && <>
+            {book.authors && (
+              <>
                 <div>Author: </div>
                 <div>
                   {book.authors?.map((author, index) => (
@@ -54,10 +58,10 @@ export default function BookDetails({ book }: BookDetailsProps) {
                   ))}
                 </div>
               </>
-            }
+            )}
 
-            {book.categories
-              && <>
+            {book.categories && (
+              <>
                 <div>Categories: </div>
                 <div>
                   {book.categories?.map((category, index) => (
@@ -65,10 +69,10 @@ export default function BookDetails({ book }: BookDetailsProps) {
                   ))}
                 </div>
               </>
-            }
+            )}
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react";
-import { BookType } from "../types/Book.type";
+import { createContext, Dispatch, ReactNode, SetStateAction, useState } from 'react';
+import { BookType } from '../types/Book.type';
 
 type CartContextType = {
   cartContent: BookType[];
@@ -8,19 +8,15 @@ type CartContextType = {
 
 type CartContextProviderProps = {
   children: ReactNode;
-}
+};
 
 export const CartContext = createContext<CartContextType>({
   cartContent: [],
-  setCartContent: () => { },
+  setCartContent: () => {},
 });
 
 export default function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartContent, setCartContent] = useState<BookType[]>([]);
 
-  return (
-    <CartContext.Provider value={{ cartContent, setCartContent }}>
-      {children}
-    </CartContext.Provider>
-  )
+  return <CartContext.Provider value={{ cartContent, setCartContent }}>{children}</CartContext.Provider>;
 }

@@ -1,15 +1,15 @@
-import { ExclamationCircleIcon, EyeIcon, EyeSlashIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useContext, useState } from "react";
-import { ModalContext } from "../context/ModalContext";
+import { ExclamationCircleIcon, EyeIcon, EyeSlashIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useContext, useState } from 'react';
+import { ModalContext } from '../context/ModalContext';
 
 type SignInProps = {
-  setUsername: Dispatch<SetStateAction<string | undefined>>
-}
+  setUsername: Dispatch<SetStateAction<string | undefined>>;
+};
 
 type LoginFormState = {
-  username: string,
-  password: string,
-}
+  username: string;
+  password: string;
+};
 
 export default function SignIn({ setUsername }: SignInProps) {
   const USERNAME = 'Natalia';
@@ -20,8 +20,7 @@ export default function SignIn({ setUsername }: SignInProps) {
   const [formData, setFormData] = useState<LoginFormState>({
     username: USERNAME,
     password: PASSWORD,
-  })
-
+  });
 
   function onLoginClick(e: FormEvent<HTMLFormElement>): void {
     e.preventDefault();
@@ -35,7 +34,7 @@ export default function SignIn({ setUsername }: SignInProps) {
 
   function handleChange(e: ChangeEvent<HTMLInputElement>): void {
     const { name, value } = e.target;
-    setFormData(prevData => ({ ...prevData, [name]: value }))
+    setFormData(prevData => ({ ...prevData, [name]: value }));
   }
 
   function togglePasswordVisibility(): void {
@@ -53,12 +52,12 @@ export default function SignIn({ setUsername }: SignInProps) {
         />
       </div>
 
-      <div className="flex justify-center text-red-600">
-        {loginError}
-      </div>
+      <div className="flex justify-center text-red-600">{loginError}</div>
 
       <form method="post" onSubmit={onLoginClick}>
-        <label className="font-medium" htmlFor="username">Username<span className="text-red-600">*</span></label>
+        <label className="font-medium" htmlFor="username">
+          Username<span className="text-red-600">*</span>
+        </label>
 
         <input
           className="w-full p-3 my-2 border border-gray-300 rounded-3xl focus:outline-none"
@@ -69,12 +68,14 @@ export default function SignIn({ setUsername }: SignInProps) {
           onChange={handleChange}
         />
 
-        <label className="font-medium" htmlFor="password">Password<span className="text-red-600">*</span></label>
+        <label className="font-medium" htmlFor="password">
+          Password<span className="text-red-600">*</span>
+        </label>
 
         <div className="flex w-full p-3 my-2 border border-gray-300 rounded-3xl">
           <input
             className="flex-grow focus:outline-none"
-            type={isPasswordVisible ? "text" : "password"}
+            type={isPasswordVisible ? 'text' : 'password'}
             name="password"
             placeholder="Password"
             defaultValue={PASSWORD}
@@ -82,14 +83,18 @@ export default function SignIn({ setUsername }: SignInProps) {
           />
 
           <button type="button" onClick={togglePasswordVisibility}>
-            {isPasswordVisible
-              ? <EyeSlashIcon className="h-4 text-gray-600 hover:text-black" />
-              : <EyeIcon className="h-4 text-gray-600 hover:text-black" />
-            }
+            {isPasswordVisible ? (
+              <EyeSlashIcon className="h-4 text-gray-600 hover:text-black" />
+            ) : (
+              <EyeIcon className="h-4 text-gray-600 hover:text-black" />
+            )}
           </button>
         </div>
 
-        <div className="flex mb-2 text-red-600"><ExclamationCircleIcon className="w-4 mx-1" />For demo purposes use {USERNAME}/{PASSWORD}</div>
+        <div className="flex mb-2 text-red-600">
+          <ExclamationCircleIcon className="w-4 mx-1" />
+          For demo purposes use {USERNAME}/{PASSWORD}
+        </div>
 
         <button
           type="submit"
@@ -99,5 +104,5 @@ export default function SignIn({ setUsername }: SignInProps) {
         </button>
       </form>
     </div>
-  )
+  );
 }

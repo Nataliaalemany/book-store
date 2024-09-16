@@ -1,7 +1,7 @@
-import { SearchByType } from "./SearchBy.type"
+import { SearchByType } from './SearchBy.type';
 
 export type Params = {
-  type: SearchByType,
-  query: string,
-  pageNumber: string
-}
+  type: SearchByType;
+  query: string;
+  pageNumber: string;
+};

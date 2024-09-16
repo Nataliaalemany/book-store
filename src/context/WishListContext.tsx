@@ -8,19 +8,17 @@ type WishListContextType = {
 
 type WishListContextProviderProps = {
   children: ReactNode;
-}
+};
 
 export const WishListContext = createContext<WishListContextType>({
   wishListContent: [],
-  setWishListContent: () => { },
+  setWishListContent: () => {},
 });
 
 export default function WishListContextProvider({ children }: WishListContextProviderProps) {
   const [wishListContent, setWishListContent] = useState<BookType[]>([]);
 
   return (
-    <WishListContext.Provider value={{ wishListContent, setWishListContent }}>
-      {children}
-    </WishListContext.Provider>
-  )
+    <WishListContext.Provider value={{ wishListContent, setWishListContent }}>{children}</WishListContext.Provider>
+  );
 }

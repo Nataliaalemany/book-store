@@ -1,16 +1,16 @@
-import { HeartIcon } from "@heroicons/react/24/outline";
-import { EyeIcon } from "@heroicons/react/24/solid";
-import { useContext } from "react";
-import { ModalContext } from "../../context/ModalContext";
-import useWishList from "../../hooks/useWishList";
-import { BookType } from "../../types/Book.type";
-import CartButton from "../cart/CartButton";
-import BookDetails from "./BookDetails";
-import BookImage from "./BookImage";
+import { HeartIcon } from '@heroicons/react/24/outline';
+import { EyeIcon } from '@heroicons/react/24/solid';
+import { useContext } from 'react';
+import { ModalContext } from '../../context/ModalContext';
+import useWishList from '../../hooks/useWishList';
+import { BookType } from '../../types/Book.type';
+import CartButton from '../cart/CartButton';
+import BookDetails from './BookDetails';
+import BookImage from './BookImage';
 
 type BookProps = {
   book: BookType;
-}
+};
 
 export default function Book({ book }: BookProps) {
   const { handleModal } = useContext(ModalContext);
@@ -24,37 +24,41 @@ export default function Book({ book }: BookProps) {
       >
         <div className="h-full">
           <div className="relative flex items-center justify-center h-48 group">
+            <BookImage
+              bookCoverThumbnail={book.imageLinks?.thumbnail}
+              bookTitle={book.title}
+            />
 
-            <BookImage bookCoverThumbnail={book.imageLinks?.thumbnail} bookTitle={book.title} />
-
-            <div
-              className="absolute inset-0 flex flex-col items-center justify-center text-white duration-300 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100"
-            >
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-white duration-300 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100">
               <EyeIcon className="w-10 h-10 mb-2" />
 
               <span className="text-sm">Click for more details</span>
             </div>
           </div>
         </div>
-      </button >
+      </button>
 
       <div className="w-full mt-2">
         <h2
           className="pb-1 overflow-hidden text-xs font-medium whitespace-normal max-w-48 overflow-ellipsis line-clamp-2"
           title={book.title}
-        >{book.title}</h2>
+        >
+          {book.title}
+        </h2>
 
         <div className="flex items-center justify-between">
-          <div className="pb-2 text-sm font-bold text-red-400">{book.saleInfo.price} {book.saleInfo.currency}</div>
+          <div className="pb-2 text-sm font-bold text-red-400">
+            {book.saleInfo.price} {book.saleInfo.currency}
+          </div>
 
           <HeartIcon
             onClick={toggleWishlistItem}
-            className={`h-6 text-gray-600 cursor-pointer hover:text-black ${inWishList ? "fill-black" : "fill-none"}`}
+            className={`h-6 text-gray-600 cursor-pointer hover:text-black ${inWishList ? 'fill-black' : 'fill-none'}`}
           />
         </div>
 
         <CartButton book={book} />
       </div>
-    </div >
-  )
+    </div>
+  );
 }

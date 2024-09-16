@@ -1,21 +1,21 @@
-import { useContext } from "react";
-import { toast } from "react-toastify";
-import { CartContext } from "../../context/CartContext";
-import useCart from "../../hooks/useCart";
-import CartItem from "./CartItem";
+import { useContext } from 'react';
+import { toast } from 'react-toastify';
+import { CartContext } from '../../context/CartContext';
+import useCart from '../../hooks/useCart';
+import CartItem from './CartItem';
 
 export default function ShoppingCartWithItems() {
   const { cartContent } = useContext(CartContext);
   const { cartSubtotal, emptyCart } = useCart();
 
   function handleCheckout() {
-    toast("Purchase simulation complete.", {
-      position: "top-right",
+    toast('Purchase simulation complete.', {
+      position: 'top-right',
       autoClose: 5000,
       hideProgressBar: false,
-      progressStyle: { background: "blue" },
+      progressStyle: { background: 'blue' },
       progress: undefined,
-      theme: "light",
+      theme: 'light',
       closeOnClick: false,
       closeButton: true,
       pauseOnHover: false,
@@ -26,7 +26,7 @@ export default function ShoppingCartWithItems() {
 
   return (
     <>
-      <div className='overflow-y-auto'>
+      <div className="overflow-y-auto">
         {cartContent.map((book, index) => (
           <div key={book.id + index}>
             <CartItem book={book} />
@@ -34,10 +34,10 @@ export default function ShoppingCartWithItems() {
         ))}
       </div>
 
-      <div className='px-2 font-bold bg-white'>
-        <div className='flex justify-between py-2'>
+      <div className="px-2 font-bold bg-white">
+        <div className="flex justify-between py-2">
           <p>SUBTOTAL:</p>
-          <p className='text-red-400'>{cartSubtotal} HUF</p>
+          <p className="text-red-400">{cartSubtotal} HUF</p>
         </div>
 
         <button
@@ -48,5 +48,5 @@ export default function ShoppingCartWithItems() {
         </button>
       </div>
     </>
-  )
+  );
 }

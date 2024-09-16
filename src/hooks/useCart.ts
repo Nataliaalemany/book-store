@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "../context/CartContext";
-import { BookType } from "../types/Book.type";
+import { useContext, useEffect, useState } from 'react';
+import { CartContext } from '../context/CartContext';
+import { BookType } from '../types/Book.type';
 
 export default function useCart() {
   const { cartContent, setCartContent } = useContext(CartContext);
@@ -10,15 +10,13 @@ export default function useCart() {
   useEffect(() => {
     calculateCartCount();
     calculateSubtotal();
-  }, [cartContent])
+  }, [cartContent]);
 
   function addBookToCart(book: BookType): void {
     setCartContent(prevCartContent => {
       const existingBook = prevCartContent.find(item => item.id === book.id);
       if (existingBook) {
-        return prevCartContent.map(item =>
-          item.id === book.id ? { ...item, count: item.count + 1 } : item
-        );
+        return prevCartContent.map(item => (item.id === book.id ? { ...item, count: item.count + 1 } : item));
       }
       return [...prevCartContent, book];
     });
@@ -33,7 +31,7 @@ export default function useCart() {
 
   function calculateSubtotal(): void {
     const subtotal = cartContent.reduce((total, book) => {
-      return total + (book.saleInfo.price * book.count);
+      return total + book.saleInfo.price * book.count;
     }, 0);
     setCartSubtotal(subtotal);
   }
@@ -50,8 +48,8 @@ export default function useCart() {
   }
 
   function removeCartItem(book: BookType): void {
-    setCartContent((prevCartContent) => {
-      return prevCartContent.filter((bookInCart) => bookInCart.id !== book.id);
+    setCartContent(prevCartContent => {
+      return prevCartContent.filter(bookInCart => bookInCart.id !== book.id);
     });
   }
 

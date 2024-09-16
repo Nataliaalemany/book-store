@@ -7,17 +7,17 @@ type ModalContextType = {
   handleModal: (content: ReactNode, position: boolean) => void;
   modalContent: ReactNode | false;
   isCentered: boolean;
-}
+};
 
 type ModalContextProviderProps = {
   children: ReactNode;
-}
+};
 
 export const ModalContext = createContext<ModalContextType>({
   isShowing: false,
-  handleModal: () => { },
+  handleModal: () => {},
   modalContent: false,
-  isCentered: false
+  isCentered: false,
 });
 
 export default function ModalContextProvider({ children }: ModalContextProviderProps) {
@@ -28,5 +28,5 @@ export default function ModalContextProvider({ children }: ModalContextProviderP
       {children}
       <ModalApp />
     </ModalContext.Provider>
-  )
-} 
+  );
+}

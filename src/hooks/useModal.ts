@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useState } from 'react';
 
 export default function useModal() {
   const [isShowing, setIsShowing] = useState<boolean>(false);
@@ -11,7 +11,7 @@ export default function useModal() {
       setModalContent(content);
       setIsCentered(isPositionCenetered);
     }
-  }
+  };
 
   return { isShowing, handleModal, modalContent, isCentered };
 }

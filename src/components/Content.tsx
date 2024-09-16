@@ -12,6 +12,6 @@ export default function Content() {
 
         <Route path={wishList} element={<WishList />} />
       </Route>
-    </Routes >
-  )
+    </Routes>
+  );
 }

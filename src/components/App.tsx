@@ -5,9 +5,8 @@ import ModalContextProvider from '../context/ModalContext';
 import WishListContextProvider from '../context/WishListContext';
 import Content from './Content';
 
-
 export default function App() {
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>

@@ -1,9 +1,9 @@
-import { useDebounce } from "@uidotdev/usehooks";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { AUTHOR, TITLE } from "../../constants";
-import { Params } from "../../types/Params.type";
-import { SearchByType } from "../../types/SearchBy.type";
+import { useDebounce } from '@uidotdev/usehooks';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { AUTHOR, TITLE } from '../../constants';
+import { Params } from '../../types/Params.type';
+import { SearchByType } from '../../types/SearchBy.type';
 
 export default function SearchBar() {
   const [searchType, setSearchType] = useState<SearchByType>(TITLE);
@@ -32,11 +32,11 @@ export default function SearchBar() {
 
   function handleInput(e: ChangeEvent<HTMLInputElement>) {
     setInputValue((e.target as HTMLInputElement).value);
-  };
+  }
 
   function handleSelect(e: ChangeEvent<HTMLSelectElement>) {
     setSearchType(e.target.value as SearchByType);
-  };
+  }
 
   return (
     <div className="flex items-center text-black">
@@ -48,11 +48,15 @@ export default function SearchBar() {
         onChange={handleInput}
       />
 
-      <select className="h-full p-2.5 pl-4 focus:outline-none rounded-r-md capitalize" onChange={handleSelect} value={searchType}>
+      <select
+        className="h-full p-2.5 pl-4 focus:outline-none rounded-r-md capitalize"
+        onChange={handleSelect}
+        value={searchType}
+      >
         <option value={TITLE}>{TITLE}</option>
 
         <option value={AUTHOR}>{AUTHOR}</option>
       </select>
     </div>
-  )
-};
+  );
+}

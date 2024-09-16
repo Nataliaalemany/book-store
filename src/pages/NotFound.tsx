@@ -1,5 +1,5 @@
-import { FaceFrownIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { FaceFrownIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
 
 export default function NotFound() {
   return (
@@ -17,5 +17,5 @@ export default function NotFound() {
         Return To Home Page
       </Link>
     </div>
-  )
+  );
 }

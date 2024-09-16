@@ -1,11 +1,11 @@
-import { TrashIcon } from "@heroicons/react/24/outline";
-import useCart from "../../hooks/useCart";
-import { BookType } from "../../types/Book.type";
-import BookImage from "../book/BookImage";
+import { TrashIcon } from '@heroicons/react/24/outline';
+import useCart from '../../hooks/useCart';
+import { BookType } from '../../types/Book.type';
+import BookImage from '../book/BookImage';
 
 type CartItemProps = {
   book: BookType;
-}
+};
 
 export default function CartItem({ book }: CartItemProps) {
   const { removeCartItem, updateBookCount } = useCart();
@@ -16,7 +16,7 @@ export default function CartItem({ book }: CartItemProps) {
         <BookImage bookCoverThumbnail={book.imageLinks?.smallThumbnail} bookTitle={book.title} />
       </div>
 
-      <div className='relative w-3/4 pl-2'>
+      <div className="relative w-3/4 pl-2">
         <div className="flex flex-row items-center justify-between">
           <h2 className="flex-grow overflow-hidden w-14 text-ellipsis whitespace-nowrap" title={book.title}>
             {book.title}
@@ -28,24 +28,30 @@ export default function CartItem({ book }: CartItemProps) {
           />
         </div>
 
-        <div className='py-2 font-bold text-red-400'>{book.saleInfo.price} {book.saleInfo.currency}</div>
+        <div className="py-2 font-bold text-red-400">
+          {book.saleInfo.price} {book.saleInfo.currency}
+        </div>
 
         <div className="absolute bottom-0">
           <div className="flex flex-row py-2">
             <button
               className="flex items-center justify-center w-6 h-6 text-2xl border hover:bg-gray-50"
               onClick={() => updateBookCount(book, -1)}
-            >-</button>
+            >
+              -
+            </button>
 
             <div className="flex items-center justify-center w-12 h-6 mx-1 border bg-slate-100">{book.count}</div>
 
             <button
               className="flex items-center justify-center w-6 h-6 text-2xl border hover:bg-gray-50"
               onClick={() => updateBookCount(book, +1)}
-            >+</button>
+            >
+              +
+            </button>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
