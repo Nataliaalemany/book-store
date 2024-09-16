@@ -25,7 +25,7 @@ export default function BookDetails({ book }: BookDetailsProps) {
         </div>
 
         <div className="flex flex-col justify-between px-2 w-80">
-          <div className="py-4 text-lg border-b-2 text-wrap">{book.title}</div>
+          <h2 className="py-4 text-lg border-b-2 text-wrap">{book.title}</h2>
 
           <div className="py-4 text-xl font-bold text-red-400">{book.saleInfo.price} {book.saleInfo.currency}</div>
 

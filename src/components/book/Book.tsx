@@ -39,10 +39,10 @@ export default function Book({ book }: BookProps) {
       </button >
 
       <div className="w-full mt-2">
-        <div
+        <h2
           className="pb-1 overflow-hidden text-xs font-medium whitespace-normal max-w-48 overflow-ellipsis line-clamp-2"
           title={book.title}
-        >{book.title}</div>
+        >{book.title}</h2>
 
         <div className="flex items-center justify-between">
           <div className="pb-2 text-sm font-bold text-red-400">{book.saleInfo.price} {book.saleInfo.currency}</div>

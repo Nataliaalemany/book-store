@@ -18,9 +18,9 @@ export default function CartItem({ book }: CartItemProps) {
 
       <div className='relative w-3/4 pl-2'>
         <div className="flex flex-row items-center justify-between">
-          <div className="flex-grow overflow-hidden w-14 text-ellipsis whitespace-nowrap" title={book.title}>
+          <h2 className="flex-grow overflow-hidden w-14 text-ellipsis whitespace-nowrap" title={book.title}>
             {book.title}
-          </div>
+          </h2>
 
           <TrashIcon
             onClick={() => removeCartItem(book)}
